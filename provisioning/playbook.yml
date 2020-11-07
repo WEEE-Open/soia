@@ -1,0 +1,77 @@
+---
+- hosts: all
+  become: true
+
+  pre_tasks:
+    # Required on CentOS 8 to install 389DS
+    # Install latest since this is only a repository
+    - name: Install EPEL
+      yum:
+        name: epel-release
+        state: latest
+      when: ansible_facts['distribution_major_version'] | int > 7
+
+    # Get variables
+    - name: Import variables
+      include_vars: variables.yml
+      tags: always
+
+    # Get variables
+    - name: Import identities
+      include_vars: identities.yml
+      tags: always
+  
+
+  roles:
+    # Install and configure 389DS
+    # by https://github.com/lvps/389ds-server
+    - role: lvps.389ds_server
+      dirsrv_install_examples: false
+      dirsrv_defaults_version: "001004002"
+      dirsrv_selfsigned_cert: false
+      dirsrv_tls_enabled: true
+      dirsrv_tls_cert_file: "fullchain-certificate.pem"
+      dirsrv_tls_key_file: "tls.key"
+      dirsrv_tls_certificate_trusted: false
+      dirsrv_tls_files_remote: false
+      dirsrv_tls_enforced: true
+      dirsrv_tls_minssf: 128
+      dirsrv_password_storage_scheme: "PBKDF2_SHA256"
+      dirsrv_create_suffix_entry: true
+      dirsrv_plugins_enabled:
+        MemberOf Plugin: true
+      dirsrv_logging:
+        audit:
+          enabled: true
+          logrotationtimeunit: day
+          logmaxdiskspace: 400
+          maxlogsize: 200
+          maxlogsperdir: 7
+          mode: 600
+        access:
+          enabled: true
+          logrotationtimeunit: day
+          logmaxdiskspace: 400
+          maxlogsize: 200
+          maxlogsperdir: 7
+          mode: 600
+        error:
+          enabled: true
+          logrotationtimeunit: day
+          logmaxdiskspace: 400
+          maxlogsize: 200
+          maxlogsperdir: 7
+          mode: 600
+      dirsrv_custom_schema:
+        - "{{ playbook_dir }}/files/schema/97schac.ldif"
+        - "{{ playbook_dir }}/files/schema/98ssh.ldif"
+        - "{{ playbook_dir }}/files/schema/98telegram.ldif"
+        - "{{ playbook_dir }}/files/schema/98weeeopen.ldif"
+  tasks:
+    # Install policies, create skeleton, configure ACIs and whatnot
+    - name: Configure policies
+      import_tasks: policy.yml
+
+    # Populate the server
+    - name: Populate the server with elements and entries
+      import_tasks: elements.yml

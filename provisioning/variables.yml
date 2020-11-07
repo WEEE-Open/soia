@@ -1,0 +1,47 @@
+# Server FQDN and LDAP suffix
+dirsrv_fqdn: localhost
+dirsrv_suffix: "dc=localhost"
+
+# Server instance name
+dirsrv_serverid: "ldap"
+
+# Root DN username and password
+dirsrv_rootdn: "cn=root"
+dirsrv_rootdn_password: ThisIsNotProduction
+
+# Server settings
+dirsrv_defaults_version: "001004002"
+dirsrv_selfsigned_cert: False
+dirsrv_create_suffix_entry: True
+
+# Service LDAP passwords:
+ldap_service_keycloak_password: KeyCloackPassword
+ldap_service_nextcloud_password: NextCloudPassword
+ldap_service_crauto_password: CrautoPassword
+ldap_service_bot_password: TelegramBotPassword
+ldap_service_weeelab_password: WEEELabPassword
+ldap_service_weeehire_password: WEEEHirePassword
+ldap_service_schifomacchina_password: SchifoMacchinaPassword
+ldap_service_schifomacchina_mail: example@example.com
+
+# Groups in the server:
+ldap_groups:
+  [
+    "Amministratori",
+    "HR",
+    "Elettronici",
+    "Riparatori",
+    "Riuso Creativo",
+    "Informatici",
+    "Sysadmin"
+  ]
+
+# People classes on creation:
+ldap_person_classes:
+  [
+        "nsMemberOf",
+        "schacLinkageIdentifiers",
+        "schacPersonalCharacteristics",
+        "telegramAccount",
+        "weeeOpenPerson"
+  ]

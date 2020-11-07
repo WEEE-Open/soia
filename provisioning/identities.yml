@@ -1,0 +1,436 @@
+ldap_persons:
+- attributes:
+    cn: Enzo Vitali
+    degreeCourse: Dottorato in Ingegneria Elettrica, Elettronica E Delle Comunicazioni
+    givenName: Enzo
+    mail: rlombardo@cocinacadadia.com
+    mobile: '+396599047744'
+    safetyTestDate: '20181025'
+    schacDateOfBirth: '20001127'
+    schacPersonalUniqueCode: s038199
+    schacPlaceOfBirth: Rieti (NA)
+    sn: Vitali
+    telegramID: '28349840'
+    uid: enzo.vitali
+    userPassword: asd
+    weeelabNickname: qmessina
+  groups:
+  - Riparatori
+  - Amministratori
+  - HR
+- attributes:
+    cn: Piccarda Rizzi
+    degreeCourse: Dottorato in Gestione, Produzione E Design
+    givenName: Piccarda
+    mail: edipo.galli@razernv.com
+    mobile: '+390509682124'
+    safetyTestDate: '20191122'
+    schacDateOfBirth: '19961210'
+    schacPersonalUniqueCode: s467124
+    schacPlaceOfBirth: Enna (GO)
+    sn: Rizzi
+    telegramID: '23085201'
+    uid: piccarda.rizzi
+    userPassword: asd
+    weeelabNickname: sasha20
+  groups:
+  - Riparatori
+- attributes:
+    cn: Pietro Fabbri
+    degreeCourse: Ingegneria Chimica E Alimentare
+    givenName: Pietro
+    mail: irene69@oldmadein.com
+    mobile: '+392408336691'
+    safetyTestDate: '20161118'
+    schacDateOfBirth: '19951017'
+    schacPersonalUniqueCode: s508284
+    schacPlaceOfBirth: Rovigo (BA)
+    sn: Fabbri
+    telegramID: '11252138'
+    uid: pietro.fabbri
+    userPassword: asd
+    weeelabNickname: barbieriguendal
+  groups:
+  - Riparatori
+- attributes:
+    cn: Damiana Sala
+    degreeCourse: Ingegneria Gestionale L-9
+    givenName: Damiana
+    mail: hmilani@aprilmovo.com
+    mobile: '+399884740403'
+    safetyTestDate: '20171116'
+    schacDateOfBirth: '19951028'
+    schacPersonalUniqueCode: s713575
+    schacPlaceOfBirth: Alessandria (SR)
+    sn: Sala
+    telegramID: '35792921'
+    uid: damiana.sala
+    userPassword: asd
+    weeelabNickname: grassolorenzo
+  groups:
+  - Riparatori
+- attributes:
+    cn: Eliziario Amato
+    degreeCourse: Ingegneria Della Produzione Industriale
+    givenName: Eliziario
+    mail: montanari.orfeo@usapodcasd.com
+    mobile: '+392315968655'
+    safetyTestDate: '20181014'
+    schacDateOfBirth: '19971215'
+    schacPersonalUniqueCode: s679891
+    schacPlaceOfBirth: Pisa (CI)
+    sn: Amato
+    telegramID: '17716610'
+    uid: eliziario.amato
+    userPassword: asd
+    weeelabNickname: vitaligiulietta
+  groups:
+  - Riparatori
+- attributes:
+    cn: Eusebio Santoro
+    degreeCourse: Dottorato in Matematica Pura E Applicata
+    givenName: Eusebio
+    mail: lrinaldi@schi-zo.de
+    mobile: '+393877421653'
+    safetyTestDate: '20161111'
+    schacDateOfBirth: '20001219'
+    schacPersonalUniqueCode: s705580
+    schacPlaceOfBirth: Brescia (MS)
+    sn: Santoro
+    telegramID: '26739971'
+    uid: eusebio.santoro
+    userPassword: asd
+    weeelabNickname: eserra
+  groups:
+  - Informatici
+  - Amministratori
+  - HR
+- attributes:
+    cn: Moreno Sorrentino
+    degreeCourse: Ingegneria Elettronica
+    givenName: Moreno
+    mail: aorlando@cocinacadadia.com
+    mobile: '+390915668821'
+    safetyTestDate: '20171123'
+    schacDateOfBirth: '19961113'
+    schacPersonalUniqueCode: s725329
+    schacPlaceOfBirth: Monza e della Brianza (LU)
+    sn: Sorrentino
+    telegramID: '99613962'
+    uid: moreno.sorrentino
+    userPassword: asd
+    weeelabNickname: srusso
+  groups:
+  - Informatici
+- attributes:
+    cn: Ortensia Rizzi
+    degreeCourse: Ingegneria Gestionale L-8
+    givenName: Ortensia
+    mail: flavio43@claudiaamaya.com
+    mobile: '+395859810834'
+    safetyTestDate: '20191025'
+    schacDateOfBirth: '19991027'
+    schacPersonalUniqueCode: s334261
+    schacPlaceOfBirth: Massa-Carrara (PC)
+    sn: Rizzi
+    telegramID: '79277070'
+    uid: ortensia.rizzi
+    userPassword: asd
+    weeelabNickname: nickpellegrino
+  groups:
+  - Informatici
+- attributes:
+    cn: Rosalino Testa
+    degreeCourse: Dottorato in Urban And Regional Development
+    givenName: Rosalino
+    mail: villa.isira@caeboyleg.ga
+    mobile: '+392931049525'
+    safetyTestDate: '20171220'
+    schacDateOfBirth: '20001126'
+    schacPersonalUniqueCode: s196312
+    schacPlaceOfBirth: Carbonia-Iglesias (GO)
+    sn: Testa
+    telegramID: '35939517'
+    uid: rosalino.testa
+    userPassword: asd
+    weeelabNickname: luna98
+  groups:
+  - Informatici
+- attributes:
+    cn: Irene Martini
+    degreeCourse: Pianificazione Territoriale, Urbanistica E Paesaggistico-ambientale
+    givenName: Irene
+    mail: zcoppola@psncl.com
+    mobile: '+397974241459'
+    safetyTestDate: '20181116'
+    schacDateOfBirth: '19991113'
+    schacPersonalUniqueCode: s151580
+    schacPlaceOfBirth: Viterbo (FR)
+    sn: Martini
+    telegramID: '18882893'
+    uid: irene.martini
+    userPassword: asd
+    weeelabNickname: orfeo54
+  groups:
+  - Informatici
+- attributes:
+    cn: Fiorentino Montanari
+    degreeCourse: Ingegneria Elettrica
+    givenName: Fiorentino
+    mail: soriana45@fanposh.net
+    mobile: '+393293062995'
+    safetyTestDate: '20171215'
+    schacDateOfBirth: '20001225'
+    schacPersonalUniqueCode: s103045
+    schacPlaceOfBirth: Chieti (RA)
+    sn: Montanari
+    telegramID: '76363263'
+    uid: fiorentino.montanari
+    userPassword: asd
+    weeelabNickname: lorisrizzo
+  groups:
+  - Elettronici
+  - Amministratori
+  - HR
+- attributes:
+    cn: Maggiore Amato
+    degreeCourse: Territorial, Urban, Environmental And Landscape Planning
+    givenName: Maggiore
+    mail: fsala@lexidot.com
+    mobile: '+397111395120'
+    safetyTestDate: '20161214'
+    schacDateOfBirth: '19951222'
+    schacPersonalUniqueCode: s915807
+    schacPlaceOfBirth: Aosta (PG)
+    sn: Amato
+    telegramID: '12030261'
+    uid: maggiore.amato
+    userPassword: asd
+    weeelabNickname: ugentile
+  groups:
+  - Elettronici
+- attributes:
+    cn: Gilda Fiore
+    degreeCourse: Ingegneria Aerospaziale
+    givenName: Gilda
+    mail: sebastian54@ecallen.com
+    mobile: '+395209137453'
+    safetyTestDate: '20171222'
+    schacDateOfBirth: '20001121'
+    schacPersonalUniqueCode: s421507
+    schacPlaceOfBirth: Chieti (PD)
+    sn: Fiore
+    telegramID: '55263051'
+    uid: gilda.fiore
+    userPassword: asd
+    weeelabNickname: barbieritimoteo
+  groups:
+  - Elettronici
+- attributes:
+    cn: Shaira Pellegrini
+    degreeCourse: Physics Of Complex Systems
+    givenName: Shaira
+    mail: dferraro@johonkemana.com
+    mobile: '+397919307452'
+    safetyTestDate: '20181027'
+    schacDateOfBirth: '19991012'
+    schacPersonalUniqueCode: s039848
+    schacPlaceOfBirth: Sassari (PC)
+    sn: Pellegrini
+    telegramID: '95833602'
+    uid: shaira.pellegrini
+    userPassword: asd
+    weeelabNickname: nayadefontana
+  groups:
+  - Elettronici
+- attributes:
+    cn: Laerte Longo
+    degreeCourse: Petroleum And Mining Engineering
+    givenName: Laerte
+    mail: briva@blogemail.com
+    mobile: '+392563214034'
+    safetyTestDate: '20171219'
+    schacDateOfBirth: '19961011'
+    schacPersonalUniqueCode: s398920
+    schacPlaceOfBirth: Sondrio (BG)
+    sn: Longo
+    telegramID: '37876103'
+    uid: laerte.longo
+    userPassword: asd
+    weeelabNickname: cirino92
+  groups:
+  - Elettronici
+- attributes:
+    cn: Piccarda Silvestri
+    degreeCourse: Dottorato in Architettura. Storia E Progetto
+    givenName: Piccarda
+    mail: galli.mariagiul@levelupworker.com
+    mobile: '+398787544871'
+    safetyTestDate: '20191017'
+    schacDateOfBirth: '20001216'
+    schacPersonalUniqueCode: s261235
+    schacPlaceOfBirth: Teramo (GE)
+    sn: Silvestri
+    telegramID: '62421520'
+    uid: piccarda.silvestri
+    userPassword: asd
+    weeelabNickname: evilla
+  groups:
+  - Riuso creativo
+  - Amministratori
+  - HR
+- attributes:
+    cn: Antonio Bernardi
+    degreeCourse: Automotive Engineering
+    givenName: Antonio
+    mail: fcaputo@claudiaamaya.com
+    mobile: '+390699453778'
+    safetyTestDate: '20161220'
+    schacDateOfBirth: '19961115'
+    schacPersonalUniqueCode: s874218
+    schacPlaceOfBirth: Enna (IS)
+    sn: Bernardi
+    telegramID: '51052131'
+    uid: antonio.bernardi
+    userPassword: asd
+    weeelabNickname: espositoruth
+  groups:
+  - Riuso creativo
+- attributes:
+    cn: Damiano Ruggiero
+    degreeCourse: Ingegneria Della Produzione Industriale E Dell'innovazione Tecnologica
+    givenName: Damiano
+    mail: donati.felicia@langleycourier.net
+    mobile: '+390936844297'
+    safetyTestDate: '20171014'
+    schacDateOfBirth: '19991024'
+    schacPersonalUniqueCode: s404138
+    schacPlaceOfBirth: Fermo (PZ)
+    sn: Ruggiero
+    telegramID: '61137479'
+    uid: damiano.ruggiero
+    userPassword: asd
+    weeelabNickname: carmelobernardi
+  groups:
+  - Riuso creativo
+- attributes:
+    cn: Clodovea Leone
+    degreeCourse: Architettura Per Il Progetto Sostenibile
+    givenName: Clodovea
+    mail: ettore09@pydzzs.com
+    mobile: '+395098341256'
+    safetyTestDate: '20161216'
+    schacDateOfBirth: '19991111'
+    schacPersonalUniqueCode: s651503
+    schacPlaceOfBirth: Novara (GE)
+    sn: Leone
+    telegramID: '47005617'
+    uid: clodovea.leone
+    userPassword: asd
+    weeelabNickname: contibernardo
+  groups:
+  - Riuso creativo
+- attributes:
+    cn: Miriana Milani
+    degreeCourse: Communications And Computer Networks Engineering
+    givenName: Miriana
+    mail: gregorio12@usapodcasd.com
+    mobile: '+392672483717'
+    safetyTestDate: '20171220'
+    schacDateOfBirth: '19971126'
+    schacPersonalUniqueCode: s327016
+    schacPlaceOfBirth: Taranto (SR)
+    sn: Milani
+    telegramID: '74579547'
+    uid: miriana.milani
+    userPassword: asd
+    weeelabNickname: negrilia
+  groups:
+  - Riuso creativo
+- attributes:
+    cn: Lauro Ferretti
+    degreeCourse: Dottorato in Beni Culturali
+    givenName: Lauro
+    mail: teseo55@optoseo.com
+    mobile: '+390554365962'
+    safetyTestDate: '20161028'
+    schacDateOfBirth: '19981112'
+    schacPersonalUniqueCode: s043119
+    schacPlaceOfBirth: Brescia (RG)
+    sn: Ferretti
+    telegramID: '90902158'
+    uid: lauro.ferretti
+    userPassword: asd
+    weeelabNickname: qsantoro
+  groups:
+  - Sysadmin
+  - Amministratori
+  - HR
+- attributes:
+    cn: Edilio Caruso
+    degreeCourse: "Architettura Costruzione Citt\xE0"
+    givenName: Edilio
+    mail: ruggiero.baldas@optoseo.com
+    mobile: '+397606876441'
+    safetyTestDate: '20191028'
+    schacDateOfBirth: '19971128'
+    schacPersonalUniqueCode: s505378
+    schacPlaceOfBirth: Grosseto (SO)
+    sn: Caruso
+    telegramID: '45124583'
+    uid: edilio.caruso
+    userPassword: asd
+    weeelabNickname: mancinieufemia
+  groups:
+  - Sysadmin
+- attributes:
+    cn: Eliziario Grassi
+    degreeCourse: Ingegneria Dei Materiali
+    givenName: Eliziario
+    mail: cosetta.barbier@miaowang976.com
+    mobile: '+397970345653'
+    safetyTestDate: '20161011'
+    schacDateOfBirth: '19951128'
+    schacPersonalUniqueCode: s293801
+    schacPlaceOfBirth: Genova (PI)
+    sn: Grassi
+    telegramID: '84136876'
+    uid: eliziario.grassi
+    userPassword: asd
+    weeelabNickname: alighieromartin
+  groups:
+  - Sysadmin
+- attributes:
+    cn: Albino Caputo
+    degreeCourse: Dottorato in Ingegneria Chimica
+    givenName: Albino
+    mail: mriva@heremart.com
+    mobile: '+396747753020'
+    safetyTestDate: '20191018'
+    schacDateOfBirth: '20001025'
+    schacPersonalUniqueCode: s289788
+    schacPlaceOfBirth: Sassari (PZ)
+    sn: Caputo
+    telegramID: '91873299'
+    uid: albino.caputo
+    userPassword: asd
+    weeelabNickname: arcibaldoconte
+  groups:
+  - Sysadmin
+- attributes:
+    cn: Gerlando Messina
+    degreeCourse: ICT For Smart Societies
+    givenName: Gerlando
+    mail: gianantonio.pag@dalecagie.online
+    mobile: '+397035982514'
+    safetyTestDate: '20161011'
+    schacDateOfBirth: '19991024'
+    schacPersonalUniqueCode: s763323
+    schacPlaceOfBirth: Treviso (AL)
+    sn: Messina
+    telegramID: '56017200'
+    uid: gerlando.messina
+    userPassword: asd
+    weeelabNickname: nazzareno81
+  groups:
+  - Sysadmin

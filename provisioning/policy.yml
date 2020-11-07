@@ -1,0 +1,205 @@
+- name: Disable weak ciphers
+  ldap_attr:
+    server_uri: "ldap://{{ dirsrv_fqdn }}"
+    start_tls: "true"
+    bind_dn: "cn=root"
+    validate_certs: false
+    bind_pw: "{{ dirsrv_rootdn_password }}"
+    dn: "cn=encryption,cn=config"
+    state: exact
+    name: "nsSSL3Ciphers"
+    values:
+      # These are default ciphers, but for some reason latest version of 389DS moves some 128 bit ciphers to the top of
+      # the list. And they fail (with software that supports them, that is) because minimum SSF is 256.
+      - "-all,+TLS_CHACHA20_POLY1305_SHA256,+TLS_AES_256_GCM_SHA384,+TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,+TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,+TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,+TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,+TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,+TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256,+TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,+TLS_DHE_RSA_WITH_AES_256_CBC_SHA,+TLS_DHE_DSS_WITH_AES_256_CBC_SHA,+TLS_DHE_RSA_WITH_AES_256_CBC_SHA256,+TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256,+TLS_RSA_WITH_AES_256_GCM_SHA384,+TLS_RSA_WITH_AES_256_CBC_SHA,+TLS_RSA_WITH_AES_256_CBC_SHA256"
+  tags: policy
+
+- name: Ensure container entries exist
+  ldap_entry:
+    server_uri: "ldap://{{ dirsrv_fqdn }}"
+    start_tls: "true"
+    bind_dn: "cn=root"
+    validate_certs: false
+    bind_pw: "{{ dirsrv_rootdn_password }}"
+    dn: "{{ item.dn }}"
+    objectClass: "{{ item.objectClass }}"
+    state: "{{ 'present' if item.present else 'absent' }}"
+  loop:
+    - { dn: "ou=Groups,{{ dirsrv_suffix }}", objectClass: ["organizationalunit", "top"], present: true }
+    - { dn: "ou=People,{{ dirsrv_suffix }}", objectClass: ["organizationalunit", "top"], present: true }
+    - { dn: "ou=Services,{{ dirsrv_suffix }}", objectClass: ["organizationalunit", "top"], present: true }
+    - { dn: "ou=Invites,{{ dirsrv_suffix }}", objectClass: ["organizationalunit", "top"], present: true }
+    - { dn: "ou=Special Users,{{ dirsrv_suffix }}", objectClass: ["organizationalunit", "top"], present: false }
+    - { dn: "cn=Directory Administrators,{{ dirsrv_suffix }}", objectClass: ["organizationalunit", "top"], present: false }
+  tags: policy
+
+- name: Ensure Keycloak account exists
+  ldap_entry:
+    server_uri: "ldap://{{ dirsrv_fqdn }}"
+    start_tls: "true"
+    bind_dn: "cn=root"
+    validate_certs: false
+    bind_pw: "{{ dirsrv_rootdn_password }}"
+    dn: "cn=Keycloak,ou=Services,{{ dirsrv_suffix }}"
+    objectClass: ['simpleSecurityObject', 'top', 'device']
+    state: present
+    attributes:
+      userPassword: "{{ ldap_service_keycloak_password }}"
+  tags: policy
+
+- name: Ensure Nextcloud account exists
+  ldap_entry:
+    server_uri: "ldap://{{ dirsrv_fqdn }}"
+    start_tls: "true"
+    bind_dn: "cn=root"
+    validate_certs: false
+    bind_pw: "{{ dirsrv_rootdn_password }}"
+    dn: "cn=Nextcloud,ou=Services,{{ dirsrv_suffix }}"
+    objectClass: ['simpleSecurityObject', 'top', 'device']
+    state: present
+    attributes:
+      userPassword: "{{ ldap_service_nextcloud_password }}"
+  tags: policy
+
+- name: Ensure Crauto account exists
+  ldap_entry:
+    server_uri: "ldap://{{ dirsrv_fqdn }}"
+    start_tls: "true"
+    bind_dn: "cn=root"
+    validate_certs: false
+    bind_pw: "{{ dirsrv_rootdn_password }}"
+    dn: "cn=crauto,ou=Services,{{ dirsrv_suffix }}"
+    objectClass: ['simpleSecurityObject', 'top', 'device']
+    state: present
+    attributes:
+      userPassword: "{{ ldap_service_crauto_password }}"
+  tags: policy
+
+- name: Ensure bot account exists
+  ldap_entry:
+    server_uri: "ldap://{{ dirsrv_fqdn }}"
+    start_tls: "true"
+    bind_dn: "cn=root"
+    validate_certs: false
+    bind_pw: "{{ dirsrv_rootdn_password }}"
+    dn: "cn=bot,ou=Services,{{ dirsrv_suffix }}"
+    objectClass: ['simpleSecurityObject', 'top', 'device']
+    state: present
+    attributes:
+      userPassword: "{{ ldap_service_bot_password }}"
+  tags: policy
+
+- name: Ensure weeelab account exists
+  ldap_entry:
+    server_uri: "ldap://{{ dirsrv_fqdn }}"
+    start_tls: "true"
+    bind_dn: "cn=root"
+    validate_certs: false
+    bind_pw: "{{ dirsrv_rootdn_password }}"
+    dn: "cn=weeelab,ou=Services,{{ dirsrv_suffix }}"
+    objectClass: ['simpleSecurityObject', 'top', 'device']
+    state: present
+    attributes:
+      userPassword: "{{ ldap_service_weeelab_password }}"
+  tags: policy
+
+- name: Ensure weeehire account exists
+  ldap_entry:
+    server_uri: "ldap://{{ dirsrv_fqdn }}"
+    start_tls: "true"
+    bind_dn: "cn=root"
+    validate_certs: false
+    bind_pw: "{{ dirsrv_rootdn_password }}"
+    dn: "cn=weeehire,ou=Services,{{ dirsrv_suffix }}"
+    objectClass: ['simpleSecurityObject', 'top', 'device']
+    state: present
+    attributes:
+      userPassword: "{{ ldap_service_weeehire_password }}"
+  tags: policy
+
+# Account used by various services to access Nextcloud, should be among people...
+- name: Ensure SCHIFOMACCHINA account exists
+  ldap_entry:
+    server_uri: "ldap://{{ dirsrv_fqdn }}"
+    start_tls: "true"
+    bind_dn: "cn=root"
+    validate_certs: false
+    bind_pw: "{{ dirsrv_rootdn_password }}"
+    dn: "uid=SCHIFOMACCHINA,ou=People,{{ dirsrv_suffix }}"
+    objectClass: ['inetOrgPerson', 'organizationalPerson', 'person', 'schacLinkageIdentifiers', 'schacPersonalCharacteristics', 'telegramAccount', 'weeeOpenPerson']
+    state: present
+    attributes:
+      cn: SCHIFOMACCHINA
+      givenName: SCHIFO
+      sn: MACCHINA
+      userPassword: "{{ ldap_service_schifomacchina_password }}"
+      mail: "{{ ldap_service_schifomacchina_mail }}"  # not a secret but to avoid spammers
+  tags: policy
+
+- name: Configure ACIs
+  ldap_attr:
+    server_uri: "ldap://{{ dirsrv_fqdn }}"
+    start_tls: "true"
+    bind_dn: "cn=root"
+    validate_certs: false
+    bind_pw: "{{ dirsrv_rootdn_password }}"
+    dn: "{{ item.dn }}"
+    state: exact
+    name: "aci"
+    values: "{{ item.acis }}"
+  loop:
+      -
+        dn: "{{ dirsrv_suffix }}"
+        acis:
+          - '(target = "ldap:///{{ dirsrv_suffix }}")(targetattr = "objectClass") (version 3.0; acl "Allow all to read suffix"; allow (read, search) userdn = "ldap:///all";)'
+      -
+        dn: "ou=People,{{ dirsrv_suffix }}"
+        acis:
+          - '(targetfilter = "(uid=*)")(targetattr = "objectClass || memberOf || cn || uid || mail || createTimestamp  || nsAccountLock || creatorsName || entrydn || entryid || hasSubordinates || modifiersName || modifyTimestamp || nsUniqueId || numSubordinates || parentid || subschemaSubentry") (version 3.0; acl "Allow Keycloak to read users"; allow (compare, read, search) userdn = "ldap:///cn=Keycloak,ou=Services,{{ dirsrv_suffix }}";)'
+          - '(targetfilter = "(uid=*)")(targetattr = "objectClass || memberOf || sn || cn || givenName || uid || mail || jpegPhoto || createTimestamp || creatorsName || entrydn || entryid || hasSubordinates || modifiersName || modifyTimestamp || nsUniqueId || numSubordinates || parentid || subschemaSubentry") (version 3.0; acl "Allow Nextcloud to read users"; allow (compare, read, search) userdn = "ldap:///cn=nextcloud,ou=Services,{{ dirsrv_suffix }}";)'
+          - '(targetfilter = "(uid=*)")(targetattr = "uid || cn || givenname || sn || memberof || mail || schacpersonaluniquecode || degreecourse || schacdateofbirth || schacplaceofbirth || mobile || safetytestdate || telegramid || telegramnickname || weeelabnickname || sshpublickey || description || nsaccountlock || createTimestamp || modifyTimestamp || objectClass") (version 3.0; acl "Allow Crauto to read users"; allow (compare, read, search) userdn = "ldap:///cn=crauto,ou=Services,{{ dirsrv_suffix }}";)'
+          - '(targetfilter="(&(uid=*)(objectClass=inetOrgPerson)(objectClass=schacPersonalCharacteristics)(objectClass=schacLinkageIdentifiers)(objectClass=telegramAccount)(objectClass=weeeOpenPerson))")(targetattr = "objectClass || cn || givenname || sn || memberof || mail || schacpersonaluniquecode || degreecourse || schacdateofbirth || schacplaceofbirth || mobile || safetytestdate || telegramid || telegramnickname || weeelabnickname || description || nsaccountlock || description") (version 3.0; acl "Allow Crauto to edit users"; allow (write, add, delete) userdn = "ldap:///cn=crauto,ou=Services,{{ dirsrv_suffix }}";)'
+          - '(targetfilter = "(uid=*)")(targetattr = "userPassword") (version 3.0; acl "Allow Crauto to change users password"; allow (write, add) userdn = "ldap:///cn=crauto,ou=Services,{{ dirsrv_suffix }}";)'
+          - '(targetfilter = "(uid=*)")(targetattr = "uid || cn || givenname || sn || memberof || telegramid || telegramnickname || schacDateOfBirth || safetyTestDate || nsaccountlock || objectClass") (version 3.0; acl "Allow bot to read users"; allow (compare, read, search) userdn = "ldap:///cn=bot,ou=Services,{{ dirsrv_suffix }}";)'
+          - '(targetfilter = "(uid=*)")(targetattr = "telegramnickname || telegramid") (version 3.0; acl "Allow bot to update Telegram nickname and id"; allow (write) userdn = "ldap:///cn=bot,ou=Services,{{ dirsrv_suffix }}";)'
+          - '(targetfilter = "(uid=*)")(targetattr = "uid || cn || telegramnickname || nsaccountlock || memberof || objectclass") (version 3.0; acl "Allow weeehire to read users"; allow (compare, read, search) userdn = "ldap:///cn=weeehire,ou=Services,{{ dirsrv_suffix }}";)'
+          - '(targetfilter = "(uid=*)")(targetattr = "uid || givenname || cn || schacpersonaluniquecode || weeelabnickname || nsaccountlock || objectClass") (version 3.0; acl "Allow weeelab to read users"; allow (compare, read, search) userdn = "ldap:///cn=weeelab,ou=Services,{{ dirsrv_suffix }}";)'
+      -
+        dn: "ou=Invites,{{ dirsrv_suffix }}"
+        acis:
+          - '(targetfilter = "(cn=*)")(targetattr = "inviteCode || cn || givenname || sn || mail || schacpersonaluniquecode || degreecourse || telegramid || telegramnickname") (version 3.0; acl "Allow Crauto to read invites"; allow (compare, read, search) userdn = "ldap:///cn=crauto,ou=Services,{{ dirsrv_suffix }}";)'
+          - '(targetfilter = "(cn=*)") (version 3.0; acl "Allow Crauto to delete invites"; allow (delete) userdn = "ldap:///cn=crauto,ou=Services,{{ dirsrv_suffix }}";)'
+          - '(targetfilter = "(cn=*)")(targetattr = "inviteCode || cn || givenname || sn || mail || schacpersonaluniquecode || degreecourse") (version 3.0; acl "Allow weeehire to read and create invites"; allow (compare, write, read, add, search) userdn = "ldap:///cn=weeehire,ou=Services,{{ dirsrv_suffix }}";)'
+          - '(targetattr = "inviteCode || telegramid || telegramnickname") (version 3.0; acl "Allow Bot to read invites"; allow (compare, read, search) userdn = "ldap:///cn=bot,ou=Services,{{ dirsrv_suffix }}";)'
+          - '(targetattr = "telegramid || telegramnickname") (version 3.0; acl "Allow Bot to update invites"; allow (write) userdn = "ldap:///cn=bot,ou=Services,{{ dirsrv_suffix }}";)'
+      -
+        dn: "ou=Groups,{{ dirsrv_suffix }}"
+        acis:
+          - '(targetfilter = "(cn=*)")(targetattr = "objectClass || cn || ou || description || member || uniqueMember || nsUniqueId") (version 3.0; acl "Allow Keycloak to read groups"; allow (compare, read, search) userdn = "ldap:///cn=Keycloak,ou=Services,{{ dirsrv_suffix }}";)'
+          - '(targetfilter = "(cn=*)")(targetattr = "objectClass || cn || ou || description || member || uniqueMember || nsUniqueId") (version 3.0; acl "Allow Nextcloud to read groups"; allow (compare, read, search) userdn = "ldap:///cn=Nextcloud,ou=Services,{{ dirsrv_suffix }}";)'
+          - '(targetfilter = "(cn=*)")(targetattr = "objectClass || cn || ou || description || member || uniqueMember || nsUniqueId") (version 3.0; acl "Allow Crauto to read groups"; allow (compare, read, search) userdn = "ldap:///cn=crauto,ou=Services,{{ dirsrv_suffix }}";)'
+          - '(targetfilter = "(cn=*)")(targetattr = "member || uniqueMember") (version 3.0; acl "Allow Crauto to add and remove people from groups"; allow (write) userdn = "ldap:///cn=crauto,ou=Services,{{ dirsrv_suffix }}";)'
+  tags: policy
+
+- name: Configure password policy
+  ldap_attr:
+    server_uri: "ldap://{{ dirsrv_fqdn }}"
+    start_tls: "true"
+    bind_dn: "cn=root"
+    validate_certs: false
+    bind_pw: "{{ dirsrv_rootdn_password }}"
+    dn: "cn=config"
+    state: exact
+    name: "{{ item.name }}"
+    values: "{{ item.value }}"
+  loop:
+    - { name: "passwordCheckSyntax", value: "on" }
+    - { name: "passwordMinLength", value: "12" }
+    - { name: "PasswordMinTokenLength", value: "16" }
+    - { name: "passwordMinCategories", value: "1" }
+    - { name: "passwordLockout", value: "on" }
+    - { name: "passwordMaxFailure", value: "6" }
+    - { name: "passwordLockoutDuration", value: "120" }
+    - { name: "passwordLegacyPolicy", value: "off" }
+    - { name: "passwordIsGlobalPolicy", value: "on" }
+  tags: policy

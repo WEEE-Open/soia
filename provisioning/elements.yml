@@ -1,0 +1,57 @@
+- name: Remove example groups
+  ldap_entry:
+    server_uri: "ldap://{{ dirsrv_fqdn }}"
+    start_tls: "true"
+    bind_dn: "cn=root"
+    validate_certs: false
+    bind_pw: "{{ dirsrv_rootdn_password }}"
+    dn: "cn={{ item }},ou=Groups,{{ dirsrv_suffix }}"
+    state: absent
+  loop:
+    - Accounting Managers
+    - HR Managers
+    - PD Managers
+    - QA Managers
+  tags: group
+
+- name: Add groups
+  ldap_entry:
+    server_uri: "ldap://{{ dirsrv_fqdn }}"
+    start_tls: "true"
+    bind_dn: "cn=root"
+    validate_certs: false
+    bind_pw: "{{ dirsrv_rootdn_password }}"
+    dn: "cn={{ item }},ou=Groups,{{ dirsrv_suffix }}"
+    objectClass: ['groupOfNames', 'top']
+    state: present
+  loop: "{{ldap_groups}}"
+  tags: group
+
+- name: Add example people
+  ldap_entry:
+    server_uri: "ldap://{{ dirsrv_fqdn }}"
+    start_tls: "true"
+    bind_dn: "cn=root"
+    validate_certs: false
+    bind_pw: "{{ dirsrv_rootdn_password }}"
+    dn: "uid={{ item.attributes.uid }},ou=People,{{ dirsrv_suffix }}"
+    attributes: "{{ item.attributes }}"
+    objectClass: "{{ ldap_person_classes }}"
+    state: present
+  loop: "{{ ldap_persons }}"
+
+- name: Add people to their groups
+  ldap_attr:
+    server_uri: "ldap://{{ dirsrv_fqdn }}"
+    start_tls: "true"
+    bind_dn: "cn=root"
+    validate_certs: false
+    bind_pw: "{{ dirsrv_rootdn_password }}"
+    dn: "cn={{ item[0] }},ou=Groups,{{ dirsrv_suffix }}"
+    name: "member"
+    values: "uid={{ item[1].attributes.uid }},ou=People,{{ dirsrv_suffix }}"
+    state: present
+  when: "item[0] in item[1].groups"
+  with_nested:
+    - "{{ ldap_groups }}"
+    - "{{ ldap_persons }}"
