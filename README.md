@@ -5,20 +5,48 @@ S.O.I.A. allows our developers to instantly create a local test instance of the 
 
 ### Test data
 
-The repository already comes with a set of fictitious identities, with five members for every group and five of them being administrators (one for each group). If however you need to generate a fresh dataset, you can do so with `make identities`. This requires:
+The repository already comes with a set of fictitious identities, with five members for every group and five of them being administrators (one for each group). If however you need to generate a fresh dataset, you can do so with:
 
-- `make` - for the command itself
+``` shell script
+make identities
+```
+
+This requires:
+
+- `make` - to run the Makefile
 - `Python` - for the scripts that generates the data
-- `requests` - for querying [NameFake.com's API](https://namefake.com)
-- `PyYAML` - for generating `identities.yml`
+  - `requests` - for querying [namefake.com's API](https://namefake.com)
+  - `PyYAML` - for generating `identities.yml`
 
 The identities are generated from data gathered from [namefake.com](https://namefake.com)
 
 ### How to run
 
-Make sure to have Vagrant and Ansible installed and run `make` or `make vm`  
-To destroy the VM and remove all unnecessary files (`.vagrant`, downloaded Ansible roles and OpenSSL files) run `make clean`  
-To destroy the current VM and recreate it from scratch run `make reinstall`
+Make sure to have Vagrant and Ansible installed and run:
+``` shell script
+make
+```
+
+To destroy the VM and remove all unnecessary files run:
+
+``` shell script
+make clean
+```
+
+To destroy the current VM and recreate it from scratch run:
+
+``` shell script
+make reinstall
+```
+
+This requires:
+
+- `make` - to run the Makefile
+- `Vagrant` - to create the virtual machine
+- `VirtualBox` - VM backend for Vagrant
+- `Ansible` - To deploy the server on the VM
+
+By default the machine is allocated with 4 GiB of RAM and 4 vCPUs at its disposition. This can be easily changed within the Vagrantfile
 
 ### Important notes
 
