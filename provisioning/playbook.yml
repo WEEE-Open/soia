@@ -8,7 +8,7 @@
     - name: Install EPEL
       yum:
         name: epel-release
-        state: latest
+        state: present
       when: ansible_facts['distribution_major_version'] | int > 7
 
     # Get variables

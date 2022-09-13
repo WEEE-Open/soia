@@ -41,7 +41,7 @@
   loop: "{{ ldap_persons }}"
 
 - name: Add people to their groups
-  ldap_attr:
+  ldap_attrs:
     server_uri: "ldap://{{ dirsrv_fqdn }}"
     start_tls: "true"
     bind_dn: "cn=root"

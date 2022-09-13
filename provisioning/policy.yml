@@ -1,5 +1,5 @@
 - name: Disable weak ciphers
-  ldap_attr:
+  ldap_attrs:
     server_uri: "ldap://{{ dirsrv_fqdn }}"
     start_tls: "true"
     bind_dn: "cn=root"
@@ -137,7 +137,7 @@
   tags: policy
 
 - name: Configure ACIs
-  ldap_attr:
+  ldap_attrs:
     server_uri: "ldap://{{ dirsrv_fqdn }}"
     start_tls: "true"
     bind_dn: "cn=root"
@@ -182,7 +182,7 @@
   tags: policy
 
 - name: Configure password policy
-  ldap_attr:
+  ldap_attrs:
     server_uri: "ldap://{{ dirsrv_fqdn }}"
     start_tls: "true"
     bind_dn: "cn=root"
